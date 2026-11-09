@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
     controller_interface
     hardware_interface
         pluginlib
+        control_toolbox
     )
 
 catkin_package(
@@ -25,6 +26,7 @@ catkin_package(
         controller_interface
         hardware_interface
         pluginlib
+        control_toolbox
 )
 
 ###########

@@ -5,6 +5,7 @@
 #include "controller_interface/controller.h"
 #include <ros/ros.h>
 #include <hardware_interface/joint_command_interface.h>
+#include <control_toolbox/pid.h>
 
 
 namespace hero_chassis_controller {
@@ -19,5 +20,14 @@ public:
               ros::NodeHandle& controller_nh) override;
     void update(const ros::Time& time,
               const ros::Duration& period) override;
+private:
+    hardware_interface::JointHandle left_front_joint_;
+    hardware_interface::JointHandle right_front_joint_;
+    hardware_interface::JointHandle left_back_joint_;
+    hardware_interface::JointHandle right_back_joint_;
+    control_toolbox::Pid left_front_pid_;
+    control_toolbox::Pid right_front_pid_;
+    control_toolbox::Pid left_back_pid_;
+    control_toolbox::Pid right_back_pid_;
 };
 } /* namespace hero_chassis_controller*/

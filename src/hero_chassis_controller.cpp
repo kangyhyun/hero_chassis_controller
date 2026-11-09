@@ -7,9 +7,22 @@
 namespace hero_chassis_controller {
 
     bool HeroChassisController::init(
-        hardware_interface::EffortJointInterface*,
+        hardware_interface::EffortJointInterface* effort_joint_interface,
         ros::NodeHandle&,
-        ros::NodeHandle&) {
+        ros::NodeHandle&)
+    {
+        left_front_joint_=
+            effort_joint_interface->getHandle("left_front_wheel_joint");
+
+        right_front_joint_=
+            effort_joint_interface->getHandle("right_front_wheel_joint");
+
+        left_back_joint_=
+            effort_joint_interface->getHandle("left_back_wheel_joint");
+
+        right_back_joint_ =
+            effort_joint_interface->getHandle("right_back_wheel_joint");
+
         ROS_INFO_STREAM("HeroChassisController initialized.");//打印初始化信息
         return true;
     }
@@ -22,9 +35,14 @@ namespace hero_chassis_controller {
     void HeroChassisController::update(
         const ros::Time&,
         const ros::Duration&) {
+        left_front_joint_.setCommand(0.0);
+        right_front_joint_.setCommand(0.0);
+        left_back_joint_.setCommand(0.0);
+        right_back_joint_.setCommand(0.0);//让四个轮子输出 0 力矩，保持静止
+
         ROS_INFO_STREAM_ONCE(
-            "HeroChassisController update() is running.");
-    }
+                "HeroChassisController update() is running.");
+        }
 
 }  // namespace hero_chassis_controller
 

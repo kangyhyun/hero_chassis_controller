@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hero_chassis_controller</name>
+  <version>0.1.0</version>
+  <description>Hero chassis ros_control controller.</description>
+
+  <maintainer email="kang.080016@qq.com">kangyhyun</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>controller_interface</depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>rm_description_for_task</exec_depend>
+
+  <export>
+    <controller_interface
+            plugin="${prefix}/hero_chassis_controller_plugins.xml"/>
+  </export>
+</package>
+

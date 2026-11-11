@@ -9,7 +9,6 @@ namespace hero_chassis_controller
     // 四轮麦轮底盘运动学。轮序固定为：左前、右前、左后、右后。
     // 坐标系遵循 ROS 约定：x 向前，y 向左，z 向上，wz 逆时针为正。
     class Mecanum
-
     {
     public:
         Mecanum(double wheel_radius = 0.07625, double wheel_base = 0.4,

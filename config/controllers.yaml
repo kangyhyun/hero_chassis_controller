@@ -6,7 +6,6 @@ controller:
     wheel_track: 0.4
     odom_publish_rate: 50.0
     world_frame_mode: false
-    odom_frame: odom
     base_frame: base_link
     max_wheel_speed: 50.0
 

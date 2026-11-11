@@ -1,200 +1,106 @@
-# Package Name
+# hero_chassis_controller
 
-## Overview
+## 简介
+A simple four-wheel mecanum chassis controller for ROS Noetic<br >
 
-This is a template: replace, remove, and add where required. Describe here what this package does and what it's meant
-for in a few sentences.
+简略的四轮麦克纳姆轮底盘 ros_control 控制器，运行在 ROS Noetic + Gazebo 仿真环境中。
 
-**Keywords:** example, package, template
-
-Or, add some keywords to the Bitbucket or GitHub repository.
+**关键词**：ROS, ros_control
 
 ### License
 
-The source code is released under a [BSD 3-Clause license](LICENSE).
-
-**Author: Péter Fankhauser<br />
-Affiliation: [ANYbotics](https://www.anybotics.com/)<br />
-Maintainer: Péter Fankhauser, pfankhauser@anybotics.com**
-
-The PACKAGE NAME package has been tested under [ROS] Indigo, Melodic and Noetic on respectively Ubuntu 14.04, 18.04 and
-20.04. This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
-
-[![Build Status](http://rsl-ci.ethz.ch/buildStatus/icon?job=ros_best_practices)](http://rsl-ci.ethz.ch/job/ros_best_practices/)
-
-![Example image](doc/example.jpg)
-
-[comment]: <> (### Publications)
-
-[comment]: <> (If you use this work in an academic context, please cite the following publication&#40;s&#41;:)
-
-[comment]: <> (* P. Fankhauser, M. Bloesch, C. Gehring, M. Hutter, and R. Siegwart: **PAPER TITLE**. IEEE/RSJ International Conference)
-
-[comment]: <> (  on Intelligent Robots and Systems &#40;IROS&#41;, 2015. &#40;[PDF]&#40;http://dx.doi.org/10.3929/ethz-a-010173654&#41;&#41;)
-
-[comment]: <> (        @inproceedings{Fankhauser2015,)
-
-[comment]: <> (            author = {Fankhauser, P\'{e}ter and Hutter, Marco},)
-
-[comment]: <> (            booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems &#40;IROS&#41;},)
-
-[comment]: <> (            title = {{PAPER TITLE}},)
-
-[comment]: <> (            publisher = {IEEE},)
-
-[comment]: <> (            year = {2015})
-
-[comment]: <> (        })
-
-## Installation
-
-### Installation from Packages
-
-To install all packages from the this repository as Debian packages use
-
-    sudo apt-get install ros-noetic-...
-
-Or better, use `rosdep`:
-
-	sudo rosdep install --from-paths src
-
-### Building from Source
-
-#### Dependencies
-
-- [Robot Operating System (ROS)](http://wiki.ros.org) (middleware for robotics),
-- [Eigen] (linear algebra library)
-
-  sudo rosdep install --from-paths src
-
-#### Building
-
-To build from source, clone the latest version from this repository into your catkin workspace and compile the package
-using
-
-	cd catkin_workspace/src
-	git clone https://github.com/ethz-asl/ros_best_practices.git
-	cd ../
-	rosdep install --from-paths . --ignore-src
-	catkin_make
-
-### Running in Docker
-
-Docker is a great way to run an application with all dependencies and libraries bundles together. Make sure
-to [install Docker](https://docs.docker.com/get-docker/) first.
-
-First, spin up a simple container:
-
-	docker run -ti --rm --name ros-container ros:noetic bash
-
-This downloads the `ros:noetic` image from the Docker Hub, indicates that it requires an interactive terminal (`-t, -i`)
-, gives it a name (`--name`), removes it after you exit the container (`--rm`) and runs a command (`bash`).
-
-Now, create a catkin workspace, clone the package, build it, done!
-
-	apt-get update && apt-get install -y git
-	mkdir -p /ws/src && cd /ws/src
-	git clone https://github.com/leggedrobotics/ros_best_practices.git
-	cd ..
-	rosdep install --from-path src
-	catkin_make
-	source devel/setup.bash
-	roslaunch ros_package_template ros_package_template.launch
-
-### Unit Tests
-
-Run the unit tests with
-
-	catkin_make run_tests_ros_package_template
-
-### Static code analysis
-
-Run the static code analysis with
-
-	catkin_make roslint_ros_package_template
-
-## Usage
-
-Describe the quickest way to run this software, for example:
-
-Run the main node with
-
-	roslaunch ros_package_template ros_package_template.launch
-
-## Config files
-
-Config file folder/set 1
-
-* **config_file_1.yaml** Shortly explain the content of this config file
-
-Config file folder/set 2
-
-* **...**
-
-## Launch files
-
-* **launch_file_1.launch:** shortly explain what is launched (e.g standard simulation, simulation with gdb,...)
-
-  Argument set 1
-
-    - **`argument_1`** Short description (e.g. as commented in launch file). Default: `default_value`.
-
-  Argument set 2
-
-    - **`...`**
-
-* **...**
-
-## Nodes
-
-### ros_package_template
-
-Reads temperature measurements and computed the average.
-
-#### Subscribed Topics
-
-* **`/temperature`** ([sensor_msgs/Temperature])
-
-  The temperature measurements from which the average is computed.
-
-#### Published Topics
-
-...
-
-#### Services
-
-* **`get_average`** ([std_srvs/Trigger])
-
-  Returns information about the current average. For example, you can trigger the computation from the console with
-
-  	rosservice call /ros_package_template/get_average
-
-#### Parameters
-
-* **`subscriber_topic`** (string, default: "/temperature")
-
-  The name of the input topic.
-
-* **`cache_size`** (int, default: 200, min: 0, max: 1000)
-
-  The size of the cache.
-
-### NODE_B_NAME
-
-...
-
-## Bugs & Feature Requests
-
-Please report bugs and request features using the [Issue Tracker](https://github.com/gdut-dynamic-x/rm_template/issues)
-.
-
-
-[ROS]: http://www.ros.org
-
-[rviz]: http://wiki.ros.org/rviz
-
-[Eigen]: http://eigen.tuxfamily.org
-
-[std_srvs/Trigger]: http://docs.ros.org/api/std_srvs/html/srv/Trigger.html
-
-[sensor_msgs/Temperature]: http://docs.ros.org/api/sensor_msgs/html/msg/Temperature.html
+基于
+[BSD 3-Clause license](LICENSE).编译<br/>
+**作者：kangyhyun<br/>
+维护者：kangyhyun<br/>
+邮箱：kang.080016@qq.com**
+
+## 安装
+
+### 功能
+
+- 四轮独立 PID 速度闭环，使用 `control_toolbox::Pid`
+- PID 参数可通过 YAML 配置
+- 逆运动学：订阅 `/cmd_vel`，计算四个麦轮的目标转速
+- 正运动学 + 里程计：根据轮子实际转速积分出底盘位姿，发布 `/odom`
+- 发布 `odom -> base_link` 坐标变换
+- 支持“车身坐标系”和“世界坐标系”两种速度模式
+- 限制轮子最大转速，防止指令过大
+
+### 环境
+
+- Ubuntu 20.04
+- ROS Noetic
+- Gazebo 11
+
+### 依赖
+ - [rm_template](https://github.com/gdut-dynamic-x/rm_template),
+- [simple_chassis_controller](https://github.com/Bluefairy-ljy/simple_chassis_controller)
+- roscpp
+- controller_interface
+- hardware_interface
+- pluginlib
+- control_toolbox
+- geometry_msgs
+- nav_msgs
+- tf
+
+## 编译
+    cd catkin_workspace/src
+    git clone git@github.com:kangyhyun/hero_chassis_controller.git
+    # git clone https://github.com/kangyhyun/hero_chassis_controller.git
+    cd ../
+    rosdep install --from-paths . --ignore-src
+    catkin build
+    source devel/setup.bash
+
+## Config 文件
+
+Config file config
+* **controllers.yaml** hero_chassis_controller 和 joint_state_controller.的参数
+
+## Launch 文件
+
+* 
+    **hero_chassis_controller.launch:**仅英雄底盘仿真与简易底盘控制器
+    
+
+## 测试
+
+建议新开终端测试，检测环境是否加载
+    
+    source /opt/ros/noetic/setup.bash
+    source ~/chassis_ws/devel/setup.bash
+
+### 运行
+
+    roslaunch hero_chassis_controller hero_chassis_controller.launch
+
+注意：launch 文件里设置了 paused="true"，Gazebo 打开后是暂停状态，
+必须点一下左下角的play按钮，仿真时间才会开始走，控制器才会执行 update()并开始移动。
+
+简单测试指令
+包含：前进，左移，逆时针移动，停止
+
+        # 前进
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{linear: {x: 0.2}}'
+    # 左移
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{linear: {y: 0.2}}'
+    # 原地逆时针旋转
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{angular: {z: 0.5}}'
+    # 停止
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{}'
+
+
+### 查看
+
+    #查看里程计
+    rostopic echo /odom
+    rosrun tf tf_echo odom base_link
+    
+    #查看四个轮子的实时转速
+    rostopic echo /joint_states
+
+## Bugs & 功能请求
+
+请在本仓库的 [Issue Tracker](https://github.com/kangyhyun/hero_chassis_controller/issues) 提交问题和需求。

@@ -16,6 +16,9 @@ find_package(catkin REQUIRED COMPONENTS
     hardware_interface
         pluginlib
         control_toolbox
+        geometry_msgs
+        nav_msgs
+        tf
     )
 
 catkin_package(
@@ -27,6 +30,10 @@ catkin_package(
         hardware_interface
         pluginlib
         control_toolbox
+        geometry_msgs
+        nav_msgs
+        tf
+
 )
 
 ###########
@@ -43,6 +50,7 @@ include_directories(
 ## Add dependencies to exported targets
 add_library(${PROJECT_NAME} SHARED
         src/hero_chassis_controller.cpp
+        src/mecanum_kinematics.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}

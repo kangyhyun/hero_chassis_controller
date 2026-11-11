@@ -1,6 +1,19 @@
 controller:
   hero_chassis_controller:
     type: hero_chassis_controller/HeroChassisController
+    wheel_radius: 0.07625
+    wheel_base: 0.4
+    wheel_track: 0.4
+    odom_publish_rate: 50.0
+    world_frame_mode: false
+    odom_frame: odom
+    base_frame: base_link
+    max_wheel_speed: 50.0
+
+    left_front_pid:  {p: 1.0, i: 1.0, d: 0.0, i_clamp: 2.0}
+    right_front_pid: {p: 1.0, i: 1.0, d: 0.0, i_clamp: 2.0}
+    left_back_pid:   {p: 1.0, i: 1.0, d: 0.0, i_clamp: 2.0}
+    right_back_pid:  {p: 1.0, i: 1.0, d: 0.0, i_clamp: 2.0}
 
   joint_state_controller:
     type: joint_state_controller/JointStateController

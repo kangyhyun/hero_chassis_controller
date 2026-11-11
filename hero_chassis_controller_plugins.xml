@@ -4,7 +4,7 @@
             type="hero_chassis_controller::HeroChassisController"
             base_class_type="controller_interface::ControllerBase">
         <description>
-            Empty hero chassis controller.
+            Mecanum wheel chassis controller.
         </description>
     </class>
 </library>

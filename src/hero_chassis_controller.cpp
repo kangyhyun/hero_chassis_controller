@@ -5,7 +5,7 @@
 namespace hero_chassis_controller
 {
 
-// 读一个轮子的 PID 参数
+// 读轮子的 PID 参数
 static void readPid(ros::NodeHandle nh, std::string name,
                     control_toolbox::Pid& pid)
 {
@@ -52,14 +52,14 @@ bool HeroChassisController::init(
     return true;
 }
 
-// 收到 /cmd_vel 就把消息存起来
+// 接收cmd_vel
 void HeroChassisController::cmdCallback(
     const geometry_msgs::Twist::ConstPtr& msg)
 {
 
     geometry_msgs::Twist t = *msg;
 
-    //世界系模式，先把速度转到车身方向
+    //世界系模式
     if (use_global)
     {
         geometry_msgs::Vector3Stamped in;
@@ -88,7 +88,7 @@ void HeroChassisController::update(const ros::Time& time,
 {
     double d = dt.toSec();
 
-    // 1. 逆运动学：车想怎么走 -> 四个轮子转多快
+    // 1. 逆运动学：四个轮子转多快
     double speed[4];
     mecanum.inverse(cmd.linear.x, cmd.linear.y, cmd.angular.z, speed);
     //限速
@@ -96,7 +96,7 @@ void HeroChassisController::update(const ros::Time& time,
     speed[1] = std::max(-max_wheel_speed, std::min(max_wheel_speed, speed[1]));
     speed[2] = std::max(-max_wheel_speed, std::min(max_wheel_speed, speed[2]));
     speed[3] = std::max(-max_wheel_speed, std::min(max_wheel_speed, speed[3]));
-    // 2. 四个轮子各算一次力矩，写法一样
+    // 2. 四个轮子各算一次力矩
     double e;
     double u;
 
@@ -120,7 +120,7 @@ void HeroChassisController::update(const ros::Time& time,
     u = pid_rb.computeCommand(e, dt);
     joint_rb.setCommand(u);
 
-    // 3. 正运动学：四个轮子实际转多快 -> 车实际走多快
+    // 3. 正运动学：车实际走多快
     double real[4];
     real[0] = joint_lf.getVelocity();
     real[1] = joint_rf.getVelocity();
